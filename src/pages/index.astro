@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { brand, concepts } from '../content';
+import { brand, concepts, socialLinks } from '../content';
 ---
 <BaseLayout title="Body Reset Website Concepts">
   <main class="hub">
@@ -8,7 +8,12 @@ import { brand, concepts } from '../content';
       <div class="copy">
         <p class="eyebrow">Stakeholder demos</p>
         <h1>{brand.name} {brand.byline}</h1>
-        <p>Five complete look-and-feel routes for the same injury and pain management website. Each version includes services, case studies, reviews, map, FAQs, and a contact form.</p>
+        <p>Twenty-three complete look-and-feel routes for the same injury and pain management website. Each version includes services, case studies, reviews, map, FAQs, contact form, and social links.</p>
+        <div class="hub-social" aria-label="Dummy social media links">
+          {socialLinks.map((social) => (
+            <a href={social.href}>{social.label}</a>
+          ))}
+        </div>
       </div>
       <img src="/businesscard.jpeg" alt="Body Reset by Georgia business card" />
     </section>
@@ -70,6 +75,24 @@ import { brand, concepts } from '../content';
     line-height: 1.65;
     max-width: 680px;
   }
+  .hub-social {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .hub-social a {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(63, 58, 50, .13);
+    border-radius: 999px;
+    padding: 0 16px;
+    background: rgba(255,255,255,.58);
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 800;
+  }
   .hub img {
     width: 100%;
     aspect-ratio: 9 / 13;
@@ -111,6 +134,24 @@ import { brand, concepts } from '../content';
   .theme-editorial { --accent: #776248; }
   .theme-natural { --accent: #6c7d58; }
   .theme-medical { --accent: #2c7c8c; }
+  .theme-anatomy { --accent: #d45d48; }
+  .theme-sports { --accent: #ef7746; }
+  .theme-kinetic { --accent: #5569ff; }
+  .theme-elite { --accent: #c98b4f; background: #1d1c1a; color: #f4efe6; }
+  .theme-bodymap { --accent: #9a6fb1; }
+  .theme-runner { --accent: #ff6b54; background: #e8f7f6; }
+  .theme-bluegold { --accent: #d9a441; background: #061b39; color: #fff8e6; }
+  .theme-skygold { --accent: #d6a23c; background: #eef8ff; }
+  .theme-mint { --accent: #1fae9b; background: #effbf6; }
+  .theme-sunrise { --accent: #df9272; background: #fff3eb; }
+  .theme-anatomyphoto { --accent: #48d6ff; background: #081828; color: #f3fbff; }
+  .theme-cleananatomy { --accent: #31b6c7; background: #f5fcff; }
+  .theme-pureclinic { --accent: #347fbd; background: #ffffff; }
+  .theme-aqualab { --accent: #22b8b2; background: #eefdfb; }
+  .theme-softhealth { --accent: #7ab6d8; background: #fffafa; }
+  .theme-clinicjourney { --accent: #29aeb8; background: #f6fdff; }
+  .theme-distributedclinic { --accent: #38aeb7; background: #f7fdff; }
+  .theme-georgiaclinic { --accent: #8b7655; background: #f8fcfb; }
   @media (max-width: 980px) {
     .hub .hero { grid-template-columns: 1fr; }
     .hub img { max-width: 360px; }
