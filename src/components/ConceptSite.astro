@@ -1,0 +1,170 @@
+---
+import { brand, caseStudies, faqs, reviews, services } from '../content';
+
+const { concept } = Astro.props;
+const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(brand.mapQuery)}&t=&z=12&ie=UTF8&iwloc=&output=embed`;
+---
+<main class={`site ${concept.className}`}>
+  <nav class="topbar" aria-label="Primary navigation">
+    <a class="wordmark" href="/">
+      <span>{brand.name}</span>
+      <small>{brand.byline}</small>
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#results">Results</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href={brand.phoneHref}>Call</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker">Injury & pain management</p>
+      <h1>Reset pain, rebuild confidence, and move with purpose.</h1>
+      <p class="lead">{brand.tagline}</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#contact">Book an appointment</a>
+        <a class="button secondary" href="#services">Explore services</a>
+      </div>
+      <dl class="hero-stats">
+        <div><dt>4</dt><dd>Treatment options</dd></div>
+        <div><dt>1:1</dt><dd>Care with Georgia</dd></div>
+        <div><dt>Goal-led</dt><dd>Recovery plans</dd></div>
+      </dl>
+    </div>
+    <div class="hero-media" aria-label="Body Reset brand card">
+      <img src="/businesscard.jpeg" alt="Body Reset by Georgia business card" />
+    </div>
+  </section>
+
+  <section class="intro-band">
+    <p>Massage, acupuncture, dry cupping, and personal training plans are combined around your symptoms, lifestyle, and goals.</p>
+    <a href={brand.phoneHref}>{brand.phone}</a>
+  </section>
+
+  <section class="section services" id="services">
+    <div class="section-heading">
+      <p class="kicker">Services</p>
+      <h2>Treatment that meets you where you are</h2>
+    </div>
+    <div class="service-grid">
+      {services.map((service) => (
+        <article class="card service-card">
+          <span class="service-mark"></span>
+          <h3>{service.title}</h3>
+          <p>{service.summary}</p>
+          <ul>
+            {service.details.map((detail) => <li>{detail}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section process">
+    <div>
+      <p class="kicker">How It Works</p>
+      <h2>A clear route from first chat to follow-up plan</h2>
+    </div>
+    <div class="steps">
+      <article><span>01</span><h3>Assess</h3><p>Discuss your symptoms, goals, training, work, and movement history.</p></article>
+      <article><span>02</span><h3>Treat</h3><p>Use the right blend of hands-on therapy, acupuncture, or cupping.</p></article>
+      <article><span>03</span><h3>Progress</h3><p>Leave with practical steps that support recovery between sessions.</p></article>
+    </div>
+  </section>
+
+  <section class="section results" id="results">
+    <div class="section-heading">
+      <p class="kicker">Case Studies</p>
+      <h2>Examples of client progress</h2>
+    </div>
+    <div class="case-list">
+      {caseStudies.map((study) => (
+        <article class="case-item">
+          <h3>{study.title}</h3>
+          <p>{study.result}</p>
+          <strong>{study.plan}</strong>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section reviews" id="reviews">
+    <div class="section-heading">
+      <p class="kicker">Reviews</p>
+      <h2>What clients say</h2>
+    </div>
+    <div class="review-grid">
+      {reviews.map((review) => (
+        <figure class="card review-card">
+          <blockquote>{review.quote}</blockquote>
+          <figcaption>{review.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section visit">
+    <div class="visit-copy">
+      <p class="kicker">Location</p>
+      <h2>Easy to find, simple to book</h2>
+      <p>{brand.location}. Share your preferred times and the reason for your visit, and Georgia will confirm the best appointment option.</p>
+      <div class="contact-strip">
+        <a href={brand.phoneHref}>{brand.phone}</a>
+        <span>{brand.owner}</span>
+      </div>
+    </div>
+    <div class="map-panel">
+      <iframe title="Map for Body Reset by Georgia" src={mapSrc} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="contact-copy">
+      <p class="kicker">Contact</p>
+      <h2>Tell Georgia what you need help with</h2>
+      <p>Use the form for appointment requests, injury questions, or training-plan enquiries. For a faster reply, call directly.</p>
+      <a class="phone-link" href={brand.phoneHref}>{brand.phone}</a>
+    </div>
+    <form class="contact-form" name="body-reset-contact" method="post" data-netlify="true">
+      <input type="hidden" name="form-name" value="body-reset-contact" />
+      <label>
+        Name
+        <input name="name" type="text" autocomplete="name" required />
+      </label>
+      <label>
+        Phone or email
+        <input name="contact" type="text" autocomplete="email" required />
+      </label>
+      <label>
+        Interested in
+        <select name="service" required>
+          <option value="">Choose a service</option>
+          {services.map((service) => <option value={service.title}>{service.title}</option>)}
+        </select>
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Send enquiry</button>
+    </form>
+  </section>
+
+  <section class="section faq">
+    <div class="section-heading">
+      <p class="kicker">Good To Know</p>
+      <h2>Before you book</h2>
+    </div>
+    <div class="faq-list">
+      {faqs.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</main>
