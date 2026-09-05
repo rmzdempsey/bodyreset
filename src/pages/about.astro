@@ -1,0 +1,71 @@
+---
+import BrandLogo from '../components/BrandLogo.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../content';
+
+const qualifications = [
+  'BSc (Hons) Sports Rehabilitation and Strength and Conditioning, Plymouth University — Upper Second-Class Honours (2:1)',
+  'Level 4 Sports Massage',
+  'Level 3 Personal Trainer',
+  'Level 2 Gym Instructor',
+  'Enhanced First Aid training',
+  'Foundation Acupuncture and Dry Needling',
+  'Myofascial Dry Cupping',
+  'Intermediate Medical Emergency Management in Sports'
+];
+---
+<BaseLayout title="About Georgia Ashton | Body Reset" description="Meet Georgia Ashton, a Plymouth University sports rehabilitation graduate supporting injury recovery, strength, confidence, and sporting performance.">
+  <main class="site theme-georgiaclinic">
+    <nav class="topbar bio-nav" aria-label="Primary navigation">
+      <BrandLogo />
+      <a href="/">Home</a>
+      <a class="nav-cta" href={brand.bookingUrl}>Book online</a>
+    </nav>
+
+    <article class="section biography">
+      <header class="bio-heading">
+        <p class="kicker">About Georgia</p>
+        <h1>Helping you get back to what you love</h1>
+        <p class="lead">I’m Georgia Ashton, a qualified sports rehabilitator and strength and conditioning practitioner, with a BSc (Hons) from Plymouth University.</p>
+      </header>
+
+      <div class="bio-layout">
+        <div class="about-copy bio-story">
+          <section aria-labelledby="my-story">
+            <h2 id="my-story">A personal understanding of recovery</h2>
+            <p>Sport has always been a big part of my life. I began competing in swimming at the age of eight, and today I enjoy hiking, swimming, and running. When an injury brought my competitive swimming career to an end, receiving care from a sports rehabilitator helped me see the difference that the right support can make. That experience inspired me to pursue a career helping others.</p>
+          </section>
+
+          <section aria-labelledby="my-approach">
+            <h2 id="my-approach">Support for sport and everyday life</h2>
+            <p>Through my work in clinical and team environments, I have supported people from a wide range of backgrounds to recover from injury, rebuild confidence, maintain their fitness, and work towards their goals.</p>
+            <p>My focus is on helping people through injury, recovery, and performance—whether you are an athlete returning to your sport or simply want to move and feel better in everyday life.</p>
+            <p>I have a particular interest in working with runners and rugby players, supporting injury prevention, rehabilitation, and performance. I also enjoy working with older adults to help them stay active and feel more confident in their movement.</p>
+          </section>
+
+          <section aria-labelledby="team-experience">
+            <h2 id="team-experience">Experience in team sport</h2>
+            <p>During my time at university, I was lead medic for the university’s rugby teams, managing injuries and supporting recovery and wellbeing across both teams. I also established an injury clinic to give players access to dedicated care.</p>
+            <p>In my third year, this work was recognised with the Humanity Award and Practitioner of the Year Award.</p>
+          </section>
+        </div>
+
+        <aside class="card bio-qualifications" aria-labelledby="qualifications">
+          <p class="kicker">Education &amp; training</p>
+          <h2 id="qualifications">My qualifications</h2>
+          <ul>{qualifications.map((qualification) => <li>{qualification}</li>)}</ul>
+        </aside>
+      </div>
+
+      <section class="bio-contact" aria-labelledby="next-step">
+        <p class="kicker">Your next step</p>
+        <h2 id="next-step">Let’s talk about your goals</h2>
+        <p>Tell me what you would like to get back to, and we can discuss how I can support you.</p>
+        <div class="hero-actions">
+          <a class="button primary" href={brand.bookingUrl}>Book an appointment</a>
+          <a class="button secondary" href={brand.phoneHref}>Call Georgia</a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

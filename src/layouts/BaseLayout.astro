@@ -1,13 +1,14 @@
 ---
-const { title = 'Body Reset by Georgia' } = Astro.props;
+import '../styles/site.css';
+const { title = 'Body Reset by Georgia', description = 'Body Reset by Georgia offers consultations, sports therapy and rehabilitation, sports and deep tissue massage, acupuncture therapy, and cupping therapy.' } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Body Reset by Georgia offers massage, acupuncture, dry cupping, and personal training plans for injury and pain management." />
-    <link rel="icon" type="image/jpeg" href="/businesscard.jpeg" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/jpeg" href="/body-reset-logo.jpg" />
     <title>{title}</title>
   </head>
   <body>
