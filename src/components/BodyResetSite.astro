@@ -204,9 +204,12 @@ const followupImage = consultImage;
       <p>Book online to choose an appointment and time, or use the form for questions about treatment. For a faster reply, call directly.</p>
       <a class="phone-link" href={brand.phoneHref}>{brand.phone}</a>
     </div>
-    <form class="contact-form" name="body-reset-contact" method="post" action={`https://formsubmit.co/${brand.email}`}>
-      <input type="hidden" name="_subject" value="New Body Reset website enquiry" />
-      <input type="hidden" name="_template" value="table" />
+    <form class="contact-form" name="body-reset-contact" method="post" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="body-reset-contact" />
+      <input type="hidden" name="subject" value="New Body Reset website enquiry" />
+      <p style="display:none" aria-hidden="true">
+        <label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+      </p>
       <label>
         Name
         <input name="name" type="text" autocomplete="name" required />
