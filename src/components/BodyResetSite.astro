@@ -92,14 +92,7 @@ const followupImage = consultImage;
           <h3>{service.title}</h3>
           <p>{service.summary}</p>
           <p class="service-price"><strong>From £{Math.min(...service.appointments.map((appointment) => Number(appointment.price.replace('£', '')))).toFixed(2)}</strong></p>
-          <ul class="appointment-options">
-            {service.appointments.map((appointment) => (
-              <li>
-                <span>{appointment.title}</span>
-                <strong>{appointment.duration} mins</strong>
-              </li>
-            ))}
-          </ul>
+          
           <a class="button primary" href={brand.bookingUrl}>Book online</a>
         </article>
       ))}
